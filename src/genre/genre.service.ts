@@ -54,24 +54,11 @@ export class GenreService {
         return genre
     }
 
-    async findGenreByName(genreName: string): Promise<Genre> {
-
-
-        let genre = await this.genreModel.findOne({
-            name: {
-                $regex: genreName,
-                $options: 'i'
-            }
-        }).lean().exec();
-
-        return genre;
-    }
-
     async create(name: string): Promise<GenreDocument> {
 
 
         const genre = await this.genreModel.create({ name }).catch(err => {
-            throw err
+            throw new BadRequestException('This genre already exists')
         })
 
 
