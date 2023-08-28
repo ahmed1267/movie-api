@@ -14,7 +14,7 @@ export class MovieController {
     constructor(private readonly movieService: MovieService) { }
 
     @Get()
-    async getAllMovies(@Query() query: ExpressQuery): Promise<Movie[]> {
+    async getAllMovies(@Query() query: ExpressQuery): Promise<Object> {
         return await this.movieService.findAll(query);
     }
 
@@ -26,12 +26,9 @@ export class MovieController {
 
     @Post()
     async createMovie(
-        @Body('title') title: string,
-        @Body('description') description: string,
-        @Body('releaseDate') releaseDate: Date,
-        @Body('genre') genre: string,
+        @Body() movie: CreateMovieDto
     ): Promise<Movie> {
-        return await this.movieService.create(title, description, releaseDate, genre)
+        return await this.movieService.create(movie)
     }
 
     @Put(':id')
@@ -48,39 +45,5 @@ export class MovieController {
     ): Promise<Movie> {
         return await this.movieService.delete(id)
     }
-    // @Get()
-    // getMovieByGenre(@Query('genre') genre: 'drama' | 'adventure') {
-    //     return this.movieService.getMovieByGenre(genre);
-    // }
-
-    // @Get(':id')
-    // getOneMovie(@Param('id', ParseIntPipe) id: number) {
-    //     try {
-    //         return this.movieService.getOneMovie(id);
-
-    //     } catch (error) {
-    //         throw new NotFoundException('Doesnot exist');
-    //     }
-    // }
-
-    // @Get('genres')
-    // getGenres() {
-    //     return this.movieService.getGenres()
-    // }
-
-    // @Post()
-    // createMovie(@Body(new ValidationPipe()) createMovieDto: CreateMovieDto) {
-    //     return this.movieService.createMovie(createMovieDto)
-    // }
-
-    // @Put(':id')
-    // updateMovie(@Param('id', ParseIntPipe) id: number, @Body() updateMovieDto: UpdateMovieDto) {
-    //     return this.movieService.updateMovie(id, updateMovieDto)
-    // }
-
-    // @Delete(':id')
-    // deleteMovie(@Param('id', ParseIntPipe) id: number) {
-    //     return this.movieService.removeMovie(id)
-    // }
 
 }

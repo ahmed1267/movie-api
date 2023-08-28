@@ -9,12 +9,8 @@ import { NextFunction } from 'express';
 
 
 @Module({
-  imports: [MongooseModule.forFeatureAsync([{
-    name: Movie.name, useFactory: () => {
-      const movieSchema = MovieSchema
-      movieSchema.plugin(require('mongoose-autopopulate'));
-      return movieSchema
-    }
+  imports: [MongooseModule.forFeature([{
+    name: Movie.name, schema: MovieSchema
   }]),
     GenreModule,
   MongooseModule.forFeature([{ name: Genre.name, schema: GenreSchema }])

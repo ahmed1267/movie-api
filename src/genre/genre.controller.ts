@@ -9,14 +9,14 @@ export class GenreController {
   constructor(private readonly genreService: GenreService) { }
 
   @Get()
-  async getAllGenres(@Query() query: ExpressQuery): Promise<Genre[]> {
+  async getAllGenres(@Query() query: ExpressQuery): Promise<Object> {
     return await this.genreService.findAll(query);
   }
 
 
   @Post()
-  async createOrFindGenre(@Body('name') name: string): Promise<Genre> {
-    const genre = await this.genreService.findOrCreateGenre(name);
+  async createOrFindGenre(@Body('name') genreName: string): Promise<Genre> {
+    const genre = await this.genreService.findGenreByName(genreName);
     return genre;
   }
 

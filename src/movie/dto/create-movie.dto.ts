@@ -15,6 +15,6 @@ export class CreateMovieDto {
     releaseDate: Date
 
     @IsNotEmpty()
-    @IsString()
-    genre: string
+    // @IsString()
+    genre: string[]
 }

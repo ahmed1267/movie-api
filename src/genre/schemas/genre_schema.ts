@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes } from 'mongoose';
-import { Movie } from 'src/movie/schemas/movie_schema';
+
 
 export type GenreDocument = Genre & Document;
 
