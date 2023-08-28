@@ -1,73 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# NestJS Movie API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Welcome to the NestJS Movie API project! This API allows you to manage movies and genres through CRUD operations. You can list movies, add movies, update movies, delete movies, list genres, add genres, delete genres, and search for movies based on title or genre.
 
-## Description
+## Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Starting the Server](#starting-the-server)
+  - [API Endpoints](#api-endpoints)
+- [Postman Collection](#postman-collection)
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+Before running the application, make sure you have the following installed:
+
+- Node.js (https://nodejs.org/)
+- npm (Node Package Manager)
+- MonogDB (https://www.mongodb.com/)
+
+### Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/ahmed1267/movie-api
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd movie-api
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   $ npm i --save class-validator class-transformer
+   ```
+
+## Usage
+
+### Starting the Server
+
+To start the server, run the following command:
 
 ```bash
-$ npm install
+npm run start:dev
 ```
 
-## Running the app
+The server will start running at http://localhost:3000.
 
-```bash
-# development
-$ npm run start
+### API Endpoints
 
-# watch mode
-$ npm run start:dev
+The API endpoints are as follows:
 
-# production mode
-$ npm run start:prod
-```
+- List Movies: GET http://localhost:3000/movies
+- Get Movie: GET http://localhost:3000/movie/:id
+- Add Movie: POST http://localhost:3000/movies
+- Update Movie: PUT http://localhost:3000/movies/:id
+- Delete Movie: DELETE http://localhost:3000/movies/:id
+- Search Movies: GET http://localhost:3000/movies/type=example&keyword=example
+- List Genres: GET http://localhost:3000/genres
+- Add Genre: POST http://localhost:3000/genres
+- Delete Genre: DELETE http://localhost:3000/genres/:id
 
-## Test
+## Postman Collection
 
-```bash
-# unit tests
-$ npm run test
+For easy testing of API endpoints, you can import the provided Postman collection file (`movie-api.postman_collection.json`) into Postman or any other API testing tool.
 
-# e2e tests
-$ npm run test:e2e
+## Bonus Tasks
 
-# test coverage
-$ npm run test:cov
-```
+- Pagination: The API supports pagination for the movies list. You can specify the `page` and `limit` query parameters to retrieve specific subsets of movies.
+- Middleware: A request logging middleware has been implemented to log incoming requests.
+- Data Validation and Error Handling: Data validation and error handling are implemented to ensure proper handling of requests and responses.
 
-## Support
+Feel free to explore the project!
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Happy coding! If you have any questions or need further assistance, please don't hesitate to ask.
