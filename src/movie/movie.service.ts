@@ -29,7 +29,7 @@ export class MovieService {
         }
 
         if (currentPage > 1) {
-            params._offset = ((currentPage - 1) * (+query.limit)) || 0;
+            params._offset = ((currentPage - 1) * (params._limit)) || 0;
 
         }
 
@@ -113,12 +113,6 @@ export class MovieService {
             .catch((err) => {
                 throw new InternalServerErrorException('Unexpected error while saving the movie')
             })
-
-
-        if (!newMovie) {
-            throw new NotFoundException('There is no movie with this id');
-        }
-
 
 
         return newMovie;

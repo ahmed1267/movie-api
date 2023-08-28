@@ -15,8 +15,8 @@ export class GenreController {
 
 
   @Post()
-  async createOrFindGenre(@Body('name') genreName: string): Promise<Genre> {
-    const genre = await this.genreService.findGenreByName(genreName);
+  async createGenre(@Body('name') genreName: string): Promise<Genre> {
+    const genre = await this.genreService.create(genreName);
     return genre;
   }
 

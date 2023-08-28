@@ -26,9 +26,10 @@ export class GenreService {
         }
 
         if (currentPage > 1) {
-            params._offset = ((currentPage - 1) * (+query.limit)) || 0;
+            params._offset = ((currentPage - 1) * (params._limit)) || 0;
 
         }
+
 
         const genres = await this.genreModel
             .find()
@@ -49,6 +50,7 @@ export class GenreService {
         let genre = await this.genreModel.findById(id)
 
         if (!genre) throw new NotFoundException('There is no genre with this id')
+
         return genre
     }
 
@@ -65,11 +67,14 @@ export class GenreService {
         return genre;
     }
 
-    async createGenre(name: string): Promise<GenreDocument> {
+    async create(name: string): Promise<GenreDocument> {
+
 
         const genre = await this.genreModel.create({ name }).catch(err => {
             throw err
         })
+
+
         return genre
 
     }
