@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Genre, GenreDocument } from './schemas/genre_schema';
 import { Query as ExpressQuery } from 'express-serve-static-core';
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException, HttpException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException, HttpStatus, HttpException } from '@nestjs/common';
 import { CreateGenreDto } from './dto/create-genre.dto';
 
 @Injectable()
@@ -89,7 +89,16 @@ export class GenreService {
                     else throw new InternalServerErrorException('An unexpected error happened while creating the Genre!')
                 })
 
-            return newGenre;
+            return newGenre
+            // const response = new HttpException(
+            //     {
+            //         message: 'Genre is added successfully',
+            //         statusCode: HttpStatus.CREATED,
+            //     },
+            //     HttpStatus.CREATED,
+            // );
+
+            // throw response;
 
         } catch (error) {
             if (error instanceof HttpException) throw error

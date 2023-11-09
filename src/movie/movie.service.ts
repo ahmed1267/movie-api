@@ -132,6 +132,14 @@ export class MovieService {
 
 
 
+            //Checking if the genres in the request already exists
+            if (movie.genre && movie.genre.length) {
+                let genres = await this.findGenresIds(movie.genre).catch(err => {
+                    throw new NotFoundException('The genre you added does not exist')
+                })
+                movie.genre = genres
+            }
+
             let newMovie = await this.movieModel.create(movie)
                 .catch(err => {
                     console.log(err);
@@ -140,13 +148,6 @@ export class MovieService {
                     else throw new InternalServerErrorException('Unexpected error while creating the movie')
                 })
 
-            //Checking if the genres in the request already exists
-            if (movie.genre && movie.genre.length) {
-                let genres = await this.findGenresIds(movie.genre).catch(err => {
-                    throw new NotFoundException('The genre you added does not exist')
-                })
-                movie.genre = genres
-            }
 
             const response = new HttpException(
                 {
